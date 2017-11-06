@@ -8,4 +8,5 @@ public interface BaseService<E, ID> {
     E save (E entity);
     E findByID (ID id);
     E update (ID id);
+    E read (ID id);
 }

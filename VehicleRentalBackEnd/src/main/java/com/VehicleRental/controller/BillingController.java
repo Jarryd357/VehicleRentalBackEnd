@@ -30,6 +30,7 @@ public class BillingController {
     @Autowired
     private CustomerServiceImpl customerService;
 
+    /*
     @Autowired
     private VehicleServiceImpl vehicleService;
 
@@ -38,17 +39,14 @@ public class BillingController {
 
     @Autowired
     private EmployeeServiceImpl employeeService;
-
+*/
     @GetMapping(path = "/{CustomerID}/addBilling")
     public
     @ResponseBody
-    Billing create(@PathVariable long CustomerID,
-                   @PathVariable long VehicleID,
-                   @PathVariable long BookingID,
-                   @PathVariable long EmployeeID,
+    Billing create(@PathVariable long customerID,
                    @RequestParam @DateTimeFormat(pattern = "yyyyy/mm/dd")Date date,
                    @PathVariable long BillingID) {
-        customer = customerService.read(CustomerID);
+        customer = customerService.read(customerID);
 
         billing = getBilling(customer, vehicle, booking, employee, date, BillingID);
         billingService.create(billing);
