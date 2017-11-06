@@ -15,12 +15,13 @@ public class CustomerController {
     @Autowired
     private CustomerServiceImpl customerService;
 
+    /*
     @GetMapping(path="/all")
     public @ResponseBody
     List<Customer> getAllCustomer(){
         return customerService.getAll();
 
-    }
+    }*/
 
     @RequestMapping(value="/add", method = RequestMethod.POST)
     public void addCustomer(@RequestBody Customer customer){
@@ -28,17 +29,17 @@ public class CustomerController {
     }
 
     @RequestMapping(value="/find{customerID}")
-    public @ResponseBody Customer findCustomer(@PathVariable String customerID){
+    public @ResponseBody Customer findCustomer(@PathVariable long customerID){
         return customerService.read(customerID);
     }
 
     @RequestMapping(value="/update/{customerID}", method = RequestMethod.PUT)
-    public void updateCustomer(@RequestBody Customer customer, @PathVariable String customerID){
-        customerService.update(customerID, customer);
+    public void updateCustomer(@RequestBody Customer customer, @PathVariable long customerID){
+        customerService.update(customerID);
     }
 
     @RequestMapping(value="/delete/{customerID}",  method = RequestMethod.DELETE)
-    public void deleteCustomer(@PathVariable String customerID){
+    public void deleteCustomer(@PathVariable long customerID){
 
         customerService.delete(customerID);
     }

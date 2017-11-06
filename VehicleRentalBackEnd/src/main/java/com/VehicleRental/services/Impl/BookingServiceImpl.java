@@ -32,4 +32,9 @@ public class BookingServiceImpl implements BookingService {
     {
         return null;
     }
+
+    @Override
+    public Booking read(String s) {
+        return null;
+    }
 }
