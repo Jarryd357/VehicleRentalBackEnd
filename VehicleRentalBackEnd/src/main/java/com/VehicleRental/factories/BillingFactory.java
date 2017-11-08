@@ -2,18 +2,17 @@ package com.VehicleRental.factories;
 
 import com.VehicleRental.domain.*;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class BillingFactory {
-    public static Billing getBilling(Customer customer, Vehicle vehicle, Booking booking, Employee employee, Date date, long BillingID)
-    {
+    public static Billing buildBilling(Date billingDate, BigDecimal amountOwed, BigDecimal amountPaid, BigDecimal amountOutstanding, Rental rental) {
         Billing billing = new Billing.Builder()
-                .customer(customer)
-                .vehicle(vehicle)
-                .booking(booking)
-                .employee(employee)
-                .date(date)
-                .BillingID(BillingID)
+                .billingDate(billingDate)
+                .amountOwed(amountOwed)
+                .amountPaid(amountPaid)
+                .amountOutstanding(amountOutstanding)
+                .rental(rental)
                 .build();
         return billing;
     }

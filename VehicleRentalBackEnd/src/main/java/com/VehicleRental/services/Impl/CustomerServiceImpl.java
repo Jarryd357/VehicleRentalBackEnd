@@ -25,15 +25,15 @@ public class CustomerServiceImpl {
         return customerRepository.save(entity);
     }
 
-    public Customer read(String customerID){
+    public Customer read(Long customerID){
         return customerRepository.findOne(customerID);
     }
 
-    public Customer update(String customerID, Customer customers){
+    public Customer update(Long customerID, Customer customers){
         return customerRepository.save(customers);
     }
 
-    public void delete(String customerID){
+    public void delete(Long customerID){
         customerRepository.delete(customerID);
     }
 }

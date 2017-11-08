@@ -17,7 +17,7 @@ public class CustomerController {
 
     @GetMapping(path="/all")
     public @ResponseBody
-    List<Customer> getAllCustomer(){
+    List<Customer> getAllCustomers(){
         return customerService.getAll();
 
     }
@@ -28,17 +28,17 @@ public class CustomerController {
     }
 
     @RequestMapping(value="/find{customerID}")
-    public @ResponseBody Customer findCustomer(@PathVariable String customerID){
+    public @ResponseBody Customer findCustomer(@PathVariable Long customerID){
         return customerService.read(customerID);
     }
 
     @RequestMapping(value="/update/{customerID}", method = RequestMethod.PUT)
-    public void updateCustomer(@RequestBody Customer customer, @PathVariable String customerID){
+    public void updateCustomer(@RequestBody Customer customer, @PathVariable Long customerID){
         customerService.update(customerID, customer);
     }
 
     @RequestMapping(value="/delete/{customerID}",  method = RequestMethod.DELETE)
-    public void deleteCustomer(@PathVariable String customerID){
+    public void deleteCustomer(@PathVariable Long customerID){
 
         customerService.delete(customerID);
     }

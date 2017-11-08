@@ -2,22 +2,16 @@ package com.VehicleRental.factories;
 
 import com.VehicleRental.domain.Employee;
 
-public class EmployeeFactory
-{
-    public static Employee getEmployee(String employeeID, String employeeFirstName, String employeeLastname,
-                                    String email, String userName, String password, String role) {
-
+public class EmployeeFactory {
+    public static Employee buildEmployee(String employeeFirstName, String employeeLastName, String employeeEmailAddress, String employeeUserName, String employeePassword, String employeeRole){
         Employee employee = new Employee.Builder()
-
-                .employeeID(employeeID)
                 .employeeFirstName(employeeFirstName)
-                .employeeLastName(employeeLastname)
-                .email(email)
-                .userName(userName)
-                .password(password)
-                .role(role)
+                .employeeLastName(employeeLastName)
+                .employeeEmailAddress(employeeEmailAddress)
+                .employeeUserName(employeeUserName)
+                .employeePassword(employeePassword)
+                .employeeRole(employeeRole)
                 .build();
-
         return employee;
     }
 }

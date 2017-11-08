@@ -2,33 +2,40 @@ package com.VehicleRental.services.Impl;
 
 import com.VehicleRental.domain.Billing;
 import com.VehicleRental.repositories.BillingRepository;
-import com.VehicleRental.services.BillingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
-public class BillingServiceImpl implements BillingService {
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class BillingServiceImpl{
 
     @Autowired
-    BillingRepository billingService;
+    private BillingRepository billingRepository;
 
-    @Override
-    public Billing create(Billing billing){
-        return billingService.save(billing);
+    public List<Billing> getAll() {
+        List<Billing> bills = new ArrayList<>();
+        billingRepository.findAll()
+                .forEach(bills::add);
+        return bills;
     }
 
-    @Override
-    public Billing read(long BillingID) {
-        return billingService.findOne(BillingID);
+    public Billing create(Billing entity) {
+
+        return billingRepository.save(entity);
     }
 
-    @Override
-    public Billing update(Billing billing) {
-        return billingService.save(billing);
+    public Billing read(Long billingID) {
+        return billingRepository.findOne(billingID);
     }
 
-    @Override
-    public void delete(long BillingID) {
-        billingService.delete(BillingID);
+    public Billing update(Long billingID, Billing bills) {
+        return billingRepository.save(bills);
+    }
+
+    public void delete(Long billingID){
+        billingRepository.delete(billingID);
     }
 }

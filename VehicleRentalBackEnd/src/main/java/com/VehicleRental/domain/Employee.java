@@ -1,41 +1,78 @@
 package com.VehicleRental.domain;
 
+import javax.persistence.*;
+
 import javax.persistence.GeneratedValue;
+import java.io.Serializable;
 
-        import javax.persistence.GeneratedValue;
-        import javax.persistence.Id;
-
-public class Employee
+@Entity
+public class Employee implements Serializable
 {
-    //@Id
-    //@Expose
-    @GeneratedValue
-    private String employeeID;
-
-    //@Expose
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long employeeID;
     private String employeeFirstName;
-    //@Expose
     private String employeeLastName;
-    //@Expose
-    private String email;
-    //@Expose
-    private String userName;
-    //@Expose
-    private String password;
-    //@Expose
-    private String role;
+    private String employeeEmailAddress;
+    private String employeeUserName;
+    private String employeePassword;
+    private String employeeRole;
 
-    public static class Builder
-    {
-        private String employeeID;
+    public Long getEmployeeID() {
+        return employeeID;
+    }
+
+    public String getEmployeeFirstName() {
+        return employeeFirstName;
+    }
+
+    public String getEmployeeLastName() {
+        return employeeLastName;
+    }
+
+    public String getEmployeeEmailAddress() {
+        return employeeEmailAddress;
+    }
+
+    public String getEmployeeUserName() {
+        return employeeUserName;
+    }
+
+    public String getEmployeePassword() {
+        return employeePassword;
+    }
+
+    public String getEmployeeRole() {
+        return employeeRole;
+    }
+
+
+    public Employee(){
+
+    }
+
+    public Employee(Builder builder) {
+        this.employeeID = builder.employeeID;
+        this.employeeFirstName = builder.employeeFirstName;
+        this.employeeLastName = builder.employeeLastName;
+        this.employeeEmailAddress = builder.employeeEmailAddress;
+        this.employeeUserName = builder.employeeUserName;
+        this.employeePassword = builder.employeePassword;
+        this.employeeRole = builder.employeeRole;
+
+    }
+
+    public static class Builder{
+        private Long employeeID;
         private String employeeFirstName;
         private String employeeLastName;
-        private String email;
-        private String userName;
-        private String password;
-        private String role;
+        private String employeeEmailAddress;
+        private String employeeUserName;
+        private String employeePassword;
+        private String employeeRole;
 
-        public Builder employeeID(String value){
+
+        public Builder employeeID(Long value){
             this.employeeID = value;
             return this;
         }
@@ -50,103 +87,30 @@ public class Employee
             return this;
         }
 
-        public Builder email(String value){
-            this.email = value;
+        public Builder employeeEmailAddress(String value){
+            this.employeeEmailAddress = value;
             return this;
         }
 
-        public Builder userName(String value){
-            this.userName = value;
+        public Builder employeeUserName(String value){
+            this.employeeUserName = value;
             return this;
         }
 
-        public Builder password(String value){
-            this.password = value;
+        public Builder employeePassword(String value){
+            this.employeePassword = value;
             return this;
         }
 
-        public Builder role(String value){
-            this.role = value;
+        public Builder employeeRole(String value){
+            this.employeeRole = value;
             return this;
         }
+
 
         public Employee build(){
             return new Employee(this);
         }
-    }
-
-    private Employee(){}
-
-    public Employee(Builder builder)
-    {
-        this.employeeID = builder.employeeID;
-        this.employeeFirstName = builder.employeeFirstName;
-        this.employeeLastName = builder.employeeLastName;
-        this.email = builder.email;
-        this.userName = builder.userName;
-        this.password = builder.password;
-        this.role = builder.role;
-        this.email = builder.email;
-    }
-
-
-    public String getEmployeeID() {
-        return employeeID;
-    }
-
-    public String getEmployeeFirstName() {
-        return employeeFirstName;
-    }
-
-    public String getEmployeeLastName() {
-        return employeeLastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Employee employee = (Employee) o;
-
-        return employeeID.equals(employee.employeeID);
-    }
-
-    @Override
-    public int hashCode() {
-        return employeeID.hashCode();
-    }
-
-    @Override
-    public String toString() {
-
-
-
-        return "Employee{" +
-                "Employee ID ='" + employeeID + '\'' +
-                ", First Name ='" + employeeFirstName + '\'' +
-                ", Last Name ='" + employeeLastName + '\'' +
-                ", Email ='" + email + '\'' +
-                ", User Name ='" + userName + '\'' +
-                ", Password ='" + password + '\'' +
-                ", Role =" + role +
-                '}';
     }
 }
 

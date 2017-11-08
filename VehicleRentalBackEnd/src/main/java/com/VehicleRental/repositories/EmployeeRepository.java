@@ -5,9 +5,6 @@ import java.util.List;
 import com.VehicleRental.domain.Employee;
 import org.springframework.data.repository.CrudRepository;
 
-public interface EmployeeRepository extends CrudRepository<Employee, String>
-{
-    List<Employee> findByusername(String userName);
-    List<Employee> findById(Long id);
-    List<Employee> findBypassword(String password);
+public interface EmployeeRepository extends CrudRepository<Employee, Long> {
+
 }

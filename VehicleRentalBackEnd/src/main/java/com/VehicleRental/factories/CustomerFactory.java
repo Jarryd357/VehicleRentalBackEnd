@@ -3,8 +3,9 @@ package com.VehicleRental.factories;
 import com.VehicleRental.domain.Customer;
 
 public class CustomerFactory {
-    public static Customer buildCustomer(String customerFirstName, String customerLastName, String customerAddressStreet, String customerAddressArea, String customerAddressCity, String customerAddressCode, String customerContactNumber, String customerEmail, String customerAccPassword){
+    public static Customer buildCustomer(String customerLicenceNum, String customerFirstName, String customerLastName, String customerAddressStreet, String customerAddressArea, String customerAddressCity, String customerAddressCode, String customerContactNumber, String customerEmail, Boolean customerCleared){
         Customer customer = new Customer.Builder()
+                .customerLicenceNum(customerLicenceNum)
                 .customerFirstName(customerFirstName)
                 .customerLastName(customerLastName)
                 .customerAddressStreet(customerAddressStreet)
@@ -13,7 +14,7 @@ public class CustomerFactory {
                 .customerAddressCode(customerAddressCode)
                 .customerContactNumber(customerContactNumber)
                 .customerEmail(customerEmail)
-                .customerAccPassword(customerAccPassword)
+                .customerCleared(customerCleared)
                 .build();
         return customer;
     }
